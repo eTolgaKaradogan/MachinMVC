@@ -1,0 +1,45 @@
+﻿@model  IEnumerable<_04_Business.Models.FactoryModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr />
+
+<div class="col-md-4 col-md-offset-3">
+    <table class="table table-bordered" style="background-color: #120017; background-image: url( https://www.transparenttextures.com/patterns/diagmonds-light.png);">
+        <tr style="color: #ffd800">
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="col-md-2"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr style="color:#ffffff">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</button>  |
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Details", "Details", new { id = item.Id })</button>  |
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />

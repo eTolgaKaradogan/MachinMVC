@@ -1,0 +1,37 @@
+﻿@model _04_Business.Models.UserModel
+
+@{
+    ViewBag.Title = "YeniKayitSonrası";
+}
+
+<style>
+    .button {
+        background-color: #b200ff;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        color: #ffd800;
+        padding: 20px 80px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 30px;
+    }
+</style>
+
+<h3>@ViewBag.Message</h3>
+
+<h2>Kaydınız başarı ile oluşturulmuştur </h2>
+<br />
+<h4>Bilgilerinizi oluşturmaya devam edebilir veya çıkış yapabilirsiniz.</h4>
+<br />
+<br />
+<br />
+<center>
+
+    @Html.ActionLink("Kayıt İşlemlerine Devam Et", "Login", "Account", null, new { @class = "button" })
+    @Html.ActionLink("Çıkış Yap", "Index", "Home", null, new { @class = "button" })
+
+</center>
+

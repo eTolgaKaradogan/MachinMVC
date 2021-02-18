@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .arkaplan {
+            background-image: url("https://www.transparenttextures.com/patterns/church.png");
+            background-color: #5b5656;
+        }
+
+        .navbaricin {
+            background-color: #240023;
+            background-image: url("https://www.transparenttextures.com/patterns/climpek.png");
+            font-family: 'Lobster', cursive;
+        }
+
+        .kutu {
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            font-size: 27px;
+        }
+
+        .kutuQ {
+            font-size: 52px;
+            padding-left: 100px;
+        }
+    </style>
+</head>
+<body class="arkaplan">
+    <div class="navbar navbar-inverse navbar-fixed-top navbaricin">
+        <div>
+            @Html.ActionLink("MACIN", "Index", "Home", new { area = "" }, new { @class = "navbar-brand kutuQ" })
+        </div>
+        <div class="navbar-right">
+            <button type="button" class="navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+            </button>
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li style="padding-right:250px "> @Html.ActionLink("Giriş Yap", "Login", "Account", new { area = "" }, new { @class = "kutu" })</li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <span class="kutu" style="color:yellow; padding-right:110px;font-size:25px ">Hoşgelidiniz, Sayın @User.Identity.Name</span>
+                        <li style="padding-right:20px">
+                            @Html.ActionLink("Çıkış Yap", "Logout", "Account", new { area = "" }, new { @class = "kutu" })
+
+                        </li>
+                    </ul>
+
+                </div>
+
+            }
+        </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Hakkımızda", "Hak", "Home", new { area = "" }, new { @class = "kutu " })</li>
+                        <li>@Html.ActionLink("Referanslar", "Ref", "Home", new { area = "" }, new { @class = "kutu " })</li>
+                        <li>@Html.ActionLink("İletişim", "Ile", "Home", new { area = "" }, new { @class = "kutu " })</li>
+                        <li></li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Ana Sayfa", "Index", "Home", new { area = "" }, new { @class = "kutu " })</li>
+                        <li>@Html.ActionLink("Factory", "Index", "Factories", new { area = "" }, new { @class = "kutu " })</li>
+                        <li>@Html.ActionLink("Section", "Index", "Sections", new { area = "" }, new { @class = "kutu " })</li>
+                        <li>@Html.ActionLink("Machine", "Index", "Machines", new { area = "" }, new { @class = "kutu " })</li>
+                    </ul>
+                </div>
+            }
+        </div>
+
+    </div>
+
+    <div class="container container-fluid ">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - MACHIN</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/MyTable.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,95 @@
+﻿@model  IEnumerable<_04_Business.Models.HatırlatıcıModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .button {
+        background-color: #ae3434;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        color: #1b1b1b;
+        padding: 20px 80px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 50px;
+    }
+</style>
+<body>
+    @if (!User.Identity.IsAuthenticated)
+    {
+
+        <section>
+            <div class="jumbotron">
+                <h1 class="text-center">Hoşgeldiniz,</h1>
+                <br />
+                <h3 class="text-center">
+                    Bu sayfa Fabrika yönetiminin,<br />
+                    yöneticiler ve üyeler tarafından takibinin ve kontrolünün<br /> kolay biçimde yapılması için hizmet vermektedir.<br />
+                    Üye iseniz üye girişi yapabilir veya üye değilseniz ÜYE OL'a tıklayarak kolaylıkla üye olabilirsiniz.
+                </h3>
+            </div>
+            <center>
+                @Html.ActionLink("ÜYE OL", "Create", "Factories", null, new { @class = "button" })
+            </center>
+
+        </section>
+
+    }
+    else
+    {
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table table-bordered" id="myTable" style="background-color: #120017; background-image: url( https://www.transparenttextures.com/patterns/diagmonds-light.png); ">
+            <thead style="color: #ffd800">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Details)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MachineId)
+                    </th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+        <tbody style="color:#ffffff">
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MachineId)
+                </td>
+
+                <td>
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</button>  |
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Details", "Details", new { id = item.Id })</button>  |
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
+</tr>
+        </tbody>
+            }
+
+        </table>
+
+    }
+</body>

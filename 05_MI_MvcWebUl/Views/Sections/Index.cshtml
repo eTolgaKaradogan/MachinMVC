@@ -1,0 +1,40 @@
+﻿@model IEnumerable<_04_Business.Models.SectionModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table  class="table table-bordered" id="myTable" style="background-color: #120017; background-image: url( https://www.transparenttextures.com/patterns/diagmonds-light.png);" >
+    <thead style="color: #ffd800">
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Name)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="color:#ffffff">
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</button>  |
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Details", "Details", new { id = item.Id })</button>  |
+                    <button type="button" class="btn btn-light">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+ 
+
